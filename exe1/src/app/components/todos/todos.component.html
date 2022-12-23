@@ -1,7 +1,37 @@
-<p>todos works!</p>
-<h2>My Heroes</h2>
-<li *ngFor="let user of users">
-    <button>
-        <span class="name">{{user.name}}</span>
-    </button>
-</li>
+<fieldset>
+    <legend>Users:</legend>
+    <div *ngFor="let user of users">
+      <input type="radio" id="{{user.id}}" value="{{user.id}}" name="users" [(ngModel)]="option" (change)="userManager()" (change)="user.disabled = !user.disabled">
+      <label for="{{user.id}}">{{user.name}}</label>
+      <div *ngIf="user.disabled">
+        <ul>
+            <li>id: {{user.id}}</li>
+            <li>username: {{user.username}}</li>
+            <li>address: 
+                <ul>
+                    <li>street: {{user.address.street}}</li>
+                    <li>suite: {{user.address.suite}}</li>
+                    <li>city: {{user.address.city}}</li>
+                    <li>zipcode: {{user.address.zipcode}}</li>
+                    <li>geo:lat: {{user.address.geo.lat}} , lng: {{user.address.geo.lng}}</li>
+                </ul>
+            </li>
+            <li>website: {{user.website}}</li>
+            <li>company:
+                <ul> 
+                    <li>name: {{user.company.name}}</li>
+                    <li>catchPhrase: {{user.company.catchPhrase}}</li>
+                    <li>bs: {{user.company.bs}}</li>
+                </ul> 
+            </li>
+
+        </ul>
+    </div>
+    </div>
+</fieldset>
+<fieldset *ngIf="isToDoEnabeld">
+    <legend>ToDos:</legend>
+    <div *ngFor="let todo of toDos">
+        {{todo.title}}
+    </div>
+</fieldset>

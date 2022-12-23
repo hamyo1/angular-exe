@@ -24,9 +24,9 @@ export class Json2Ts{
      {
         return this.myHttpClient.get<Posts>(`https://jsonplaceholder.typicode.com/posts`);
      }
-     getToDos():Observable<ToDos>
+     getToDos(usrId:number):Observable<ToDos[]>
      {
-        return this.myHttpClient.get<ToDos>(`https://jsonplaceholder.typicode.com/todos`);
+        return this.myHttpClient.get<ToDos[]>(`https://jsonplaceholder.typicode.com/todos?userId=${usrId}`);
      }
      getUsers():Observable<Users[]>
      {
