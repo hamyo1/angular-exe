@@ -26,6 +26,6 @@ export interface Users {
     phone: string;
     website: string;
     company: Company;
-    disabled:boolean
+    disabled:boolean;
 }
 

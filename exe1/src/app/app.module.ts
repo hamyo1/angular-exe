@@ -7,7 +7,10 @@ import { TodosComponent } from './components/todos/todos.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
 
+const appRoute:Route[]=
+[{path:'',component:TodosComponent},{path:'ToDos',component:TodosComponent},{path:'Blog',component:BlogsComponent}]
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule,FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    RouterModule.forRoot(appRoute)
   ],
   providers: [],
   bootstrap: [AppComponent]

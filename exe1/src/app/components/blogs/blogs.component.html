@@ -1,1 +1,34 @@
-<p>blogs works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <fieldset style="height: 400px; overflow-y: auto;">
+            <legend>Posts:</legend>
+            <div *ngFor="let post of posts">
+              <input type="radio" id="{{post.id}}" value="{{post.id}}" name="users" [(ngModel)]="option" (change)="postManager()" (change)="post.disabled = !post.disabled">
+              <label for="{{post.id}}">{{post.title}}</label>
+              <div *ngIf="post.disabled">
+                <ul>
+                    <li>title:{{post.title}} </li>
+                    <li>body: {{post.body}}</li>
+                    <li>comments: </li>
+                </ul>
+            </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row" >
+        <fieldset *ngIf="isPostChosen" style="height: 350px; overflow-y: auto;">
+            <legend>Comments:</legend>
+            <div *ngFor="let comment of comments">
+                name: {{comment.name}}
+                <br/>
+                email: {{comment.email}}
+                <br/>
+                comment: {{comment.body}}
+                <br/>
+                <br/>
+            </div>
+        </fieldset>
+    </div>
+  </div>
+
+

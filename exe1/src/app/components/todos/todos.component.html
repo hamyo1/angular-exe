@@ -1,37 +1,44 @@
-<fieldset>
-    <legend>Users:</legend>
-    <div *ngFor="let user of users">
-      <input type="radio" id="{{user.id}}" value="{{user.id}}" name="users" [(ngModel)]="option" (change)="userManager()" (change)="user.disabled = !user.disabled">
-      <label for="{{user.id}}">{{user.name}}</label>
-      <div *ngIf="user.disabled">
-        <ul>
-            <li>id: {{user.id}}</li>
-            <li>username: {{user.username}}</li>
-            <li>address: 
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <fieldset style="height: 400px; overflow-y: auto;">
+            <legend>Users:</legend>
+            <div *ngFor="let user of users">
+              <input type="radio" id="{{user.id}}" value="{{user.id}}" name="users" [(ngModel)]="option" (change)="userManager()" (change)="user.disabled = !user.disabled">
+              <label for="{{user.id}}">{{user.name}}</label>
+              <div *ngIf="user.disabled">
                 <ul>
-                    <li>street: {{user.address.street}}</li>
-                    <li>suite: {{user.address.suite}}</li>
-                    <li>city: {{user.address.city}}</li>
-                    <li>zipcode: {{user.address.zipcode}}</li>
-                    <li>geo:lat: {{user.address.geo.lat}} , lng: {{user.address.geo.lng}}</li>
+                    <li>id: {{user.id}}</li>
+                    <li>username: {{user.username}}</li>
+                    <li>address: 
+                        <ul>
+                            <li>street: {{user.address.street}}</li>
+                            <li>suite: {{user.address.suite}}</li>
+                            <li>city: {{user.address.city}}</li>
+                            <li>zipcode: {{user.address.zipcode}}</li>
+                            <li>geo:lat: {{user.address.geo.lat}} , lng: {{user.address.geo.lng}}</li>
+                        </ul>
+                    </li>
+                    <li>website: {{user.website}}</li>
+                    <li>company:
+                        <ul> 
+                            <li>name: {{user.company.name}}</li>
+                            <li>catchPhrase: {{user.company.catchPhrase}}</li>
+                            <li>bs: {{user.company.bs}}</li>
+                        </ul> 
+                    </li>
+        
                 </ul>
-            </li>
-            <li>website: {{user.website}}</li>
-            <li>company:
-                <ul> 
-                    <li>name: {{user.company.name}}</li>
-                    <li>catchPhrase: {{user.company.catchPhrase}}</li>
-                    <li>bs: {{user.company.bs}}</li>
-                </ul> 
-            </li>
+            </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row" >
+        <fieldset *ngIf="isToDoEnabeld" style="height: 350px; overflow-y: auto;">
+            <legend>ToDos:</legend>
+            <div *ngFor="let todo of toDos">
+                {{todo.title}}
+            </div>
+        </fieldset>
+    </div>
+  </div>
 
-        </ul>
-    </div>
-    </div>
-</fieldset>
-<fieldset *ngIf="isToDoEnabeld">
-    <legend>ToDos:</legend>
-    <div *ngFor="let todo of toDos">
-        {{todo.title}}
-    </div>
-</fieldset>

@@ -19,7 +19,7 @@ export class TodosComponent implements OnInit {
   prev:any;
   isToDoEnabeld:boolean=false;
 
-  constructor(private json2TsServise:Json2Ts,private route: ActivatedRoute,    ) { }
+  constructor(private json2TsServise:Json2Ts) { }
 
 
   ngOnInit(): void {

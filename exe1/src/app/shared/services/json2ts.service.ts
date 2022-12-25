@@ -16,13 +16,13 @@ export class Json2Ts{
         
      }
 
-     getComments():Observable<Comments>
+     getComments(postId:number):Observable<Comments[]>
      {
-        return this.myHttpClient.get<Comments>(`https://jsonplaceholder.typicode.com/comments`);
+        return this.myHttpClient.get<Comments[]>(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
      }
-     getPosts():Observable<Posts>
+     getPosts():Observable<Posts[]>
      {
-        return this.myHttpClient.get<Posts>(`https://jsonplaceholder.typicode.com/posts`);
+        return this.myHttpClient.get<Posts[]>(`https://jsonplaceholder.typicode.com/posts`);
      }
      getToDos(usrId:number):Observable<ToDos[]>
      {
