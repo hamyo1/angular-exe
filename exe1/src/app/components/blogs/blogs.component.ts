@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Comments } from 'src/app/shared/models/comments.model';
 import { Posts } from 'src/app/shared/models/posts.model';
 import { Json2Ts } from 'src/app/shared/services/json2ts.service';
@@ -15,7 +16,7 @@ export class BlogsComponent implements OnInit {
   isPostChosen:boolean=false;
   prev:any;
 
-  constructor(private json2TsServise:Json2Ts) { }
+  constructor(private json2TsServise:Json2Ts,private router:Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -26,29 +27,16 @@ export class BlogsComponent implements OnInit {
       this.posts=res;
     } );
   }
-  public getComments(postId:number)
-  {
-      this.json2TsServise.getComments(postId).subscribe(res => {
-      this.comments=res;
-    } );
-  }
 
-  public postManager()
+  public shortBody(body:string):string
   {
-    if(this.option!=null)
-    {
-      this.getComments(this.option);
-      this.isPostChosen=true
-    }
-    if(this.option!=this.prev||this.prev==null)
-    {
-      this.posts.forEach(post => {
-        if(post.id==this.prev)
-        {
-          post.disabled=false;
-        }
-      });
-    }
-    this.prev=this.option;
+    var shortBody=body.slice(0,20);
+
+    return shortBody;
+  }
+  
+  public goToPost(post:Posts)
+  {
+    this.router.navigate(['/Posts/'], { state: post });
   }
 }

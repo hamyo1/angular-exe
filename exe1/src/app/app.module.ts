@@ -8,15 +8,20 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
+import { PostPageComponent } from './components/blogs/post-page/post-page.component';
 
 const appRoute:Route[]=
-[{path:'',component:TodosComponent},{path:'ToDos',component:TodosComponent},{path:'Blog',component:BlogsComponent}]
+[{path:'',component:TodosComponent},
+{path:'ToDos',component:TodosComponent},
+{path:'Blog',component:BlogsComponent},
+{path:'Posts',component:PostPageComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
     TodosComponent,
-    BlogsComponent
+    BlogsComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,

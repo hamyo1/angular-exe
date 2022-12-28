@@ -1,0 +1,20 @@
+
+<div class="row">
+    <div class="col-sm-6">
+        <h1>{{post.title}}</h1>
+        <p style="height: 400px; overflow-y: auto;" class="text-justify-center">
+            {{post.body}}
+        </p>
+    </div>
+    <fieldset style="height: 400px; overflow-y: auto;">
+        <legend><b class="text-justify-center">commentts</b></legend>
+        <div *ngFor="let comment of comments" class="col-sm-6">
+            <b class="bold1">User Name:</b>{{comment.name}}<b class="bold1"> Email: </b> {{comment.email}}
+            <br/>
+            <b>Comment:</b><br/>
+            {{comment.body}}
+            <br/>
+            <br/>
+        </div>
+    </fieldset>
+</div>

@@ -1,34 +1,13 @@
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <fieldset style="height: 400px; overflow-y: auto;">
-            <legend>Posts:</legend>
-            <div *ngFor="let post of posts">
-              <input type="radio" id="{{post.id}}" value="{{post.id}}" name="users" [(ngModel)]="option" (change)="postManager()" (change)="post.disabled = !post.disabled">
-              <label for="{{post.id}}">{{post.title}}</label>
-              <div *ngIf="post.disabled">
-                <ul>
-                    <li>title:{{post.title}} </li>
-                    <li>body: {{post.body}}</li>
-                    <li>comments: </li>
-                </ul>
-            </div>
-            </div>
-        </fieldset>
-    </div>
-    <div class="row" >
-        <fieldset *ngIf="isPostChosen" style="height: 350px; overflow-y: auto;">
-            <legend>Comments:</legend>
-            <div *ngFor="let comment of comments">
-                name: {{comment.name}}
-                <br/>
-                email: {{comment.email}}
-                <br/>
-                comment: {{comment.body}}
-                <br/>
-                <br/>
-            </div>
-        </fieldset>
-    </div>
-  </div>
+<h1>Welcome to our blog</h1>
+
+<article class="posts-list">
+  <h1>posts list</h1>
+  <article href="" class="browser pe-auto" *ngFor="let post of posts">
+    <h4>{{post.title}}</h4>
+    <p>{{shortBody(post.body)}}<a style="cursor: pointer;" title="read more.." (click)="goToPost(post)">...</a></p>
+  </article>
+</article>
+
+
 
 

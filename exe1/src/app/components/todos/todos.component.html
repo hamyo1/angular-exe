@@ -2,8 +2,8 @@
     <div class="row justify-content-center">
         <fieldset style="height: 400px; overflow-y: auto;">
             <legend>Users:</legend>
-            <div *ngFor="let user of users">
-              <input type="radio" id="{{user.id}}" value="{{user.id}}" name="users" [(ngModel)]="option" (change)="userManager()" (change)="user.disabled = !user.disabled">
+            <div *ngFor="let user of users ;let indexOfelement=index;">
+              <input type="radio" id="{{user.id}}" value="{{user.id}}" name="users" (change)="userManager(indexOfelement)">
               <label for="{{user.id}}">{{user.name}}</label>
               <div *ngIf="user.disabled">
                 <ul>

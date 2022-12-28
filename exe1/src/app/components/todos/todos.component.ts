@@ -38,23 +38,16 @@ export class TodosComponent implements OnInit {
       this.toDos=res;
     } );
   }
-  public userManager()
+  public userManager(index:number)
   {
-    if(this.option!=null)
+    this.users[index].disabled=true;
+    this.getToDos(this.users[index].id);
+    this.isToDoEnabeld=true;
+    if(index!=this.prev&&this.prev!=null)
     {
-      this.getToDos(this.option);
-      this.isToDoEnabeld=true
+      this.users[this.prev].disabled=false;
     }
-    if(this.option!=this.prev||this.prev==null)
-    {
-      this.users.forEach(user => {
-        if(user.id==this.prev)
-        {
-          user.disabled=false;
-        }
-      });
-    }
-    this.prev=this.option;
+    this.prev=index;
   }
 
 }
